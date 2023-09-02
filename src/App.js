@@ -252,6 +252,14 @@ function SelectedMovie({ selectedId, onCloseMovie, onAddWatched, watched }) {
     onCloseMovie();
   }
 
+  useEffect(() => {
+    document.addEventListener("keydown", function (e) {
+      if (e.code === "Escape") {
+        onCloseMovie();
+      }
+    });
+  }, [onCloseMovie]);
+
   // console.log(title, year);
 
   useEffect(() => {
