@@ -238,6 +238,16 @@ function SelectedMovie({ selectedId, onCloseMovie, onAddWatched, watched }) {
     Genre: genre,
   } = movie;
 
+  const [isTop, setisTop] = useState(imdbRating > 8);
+  console.log(isTop);
+
+  useEffect(
+    function () {
+      setisTop(imdbRating > 8);
+    },
+    [imdbRating]
+  );
+
   function handleAdd() {
     const newWatchedMovie = {
       imdbId: selectedId,
