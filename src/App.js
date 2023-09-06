@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import StarRating from "./starRating";
 import { useMovies } from "./useMovies";
 import { useLocalStorageState } from "./useLocalStorageState";
+import { useKey } from "./useKey";
 
 const tempMovieData = [
   {
@@ -287,8 +288,10 @@ function SelectedMovie({ selectedId, onCloseMovie, onAddWatched, watched }) {
     onAddWatched(newWatchedMovie);
     // onCloseMovie();
 
-    setAvgRating(Number(imdbRating));
+    // setAvgRating(Number(imdbRating));
   }
+
+  useKey("Escape", onCloseMovie);
 
   useEffect(() => {
     function callback(e) {
