@@ -238,6 +238,10 @@ function SelectedMovie({ selectedId, onCloseMovie, onAddWatched, watched }) {
     Genre: genre,
   } = movie;
 
+  const isTop = imdbRating > 8;
+
+  const [avgRating, setAvgRating] = useState(0);
+
   function handleAdd() {
     const newWatchedMovie = {
       imdbId: selectedId,
@@ -249,7 +253,9 @@ function SelectedMovie({ selectedId, onCloseMovie, onAddWatched, watched }) {
       userRating,
     };
     onAddWatched(newWatchedMovie);
-    onCloseMovie();
+    // onCloseMovie();
+
+    setAvgRating(Number(imdbRating));
   }
 
   useEffect(() => {
